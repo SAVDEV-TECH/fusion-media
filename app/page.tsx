@@ -1,19 +1,91 @@
   'use client'
-  import { motion } from 'framer-motion'
+  // import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Sparkles, Palette, Rocket, Star, MessageCircle } from 'lucide-react'
-import Link from 'next/link'
+// import Link from 'next/link'
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Menu, X } from "lucide-react"
+import Link from "next/link"
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const menuLinks = [
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Portfolio", href: "#portfolio" },
+    { name: "Testimonials", href: "#testimonials" },
+    { name: "Contact", href: "#contact" },
+  ]
+
   return (
     <main className="min-h-screen bg-white text-blue-900 overflow-hidden">
-      <nav className='w-full flex bg-blue-900 h-20'>
-        <div className="relative w-[100px] h-[70px]">
-             <img className='w-full h-full object-cover' src='/fusion.jpg' alt='fusion-media'></img>
+     <nav className="w-full bg-blue-900 text-white fixed top-0 left-0 z-50 shadow-md">
+      <div className="flex justify-between items-center h-20 px-6 md:px-12">
+        {/* Logo */}
+        <div className="flex items-center gap-3">
+          <img
+            src="/fusion.jpg"
+            alt="Fusion Media"
+            className="w-12 h-12 rounded-full object-cover"
+          />
+          <h1 className="font-bold text-xl">Fusion Media</h1>
         </div>
-      
-      </nav>
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex gap-8">
+          {menuLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="hover:text-blue-300 transition"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+
+        {/* Hamburger Button (Mobile) */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden p-2 rounded-md hover:bg-blue-800 transition"
+        >
+          {isOpen ? <X size={26} /> : <Menu size={26} /> }
+        </button>
+      </div>
+
+      {/* Mobile Menu Animation */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="mobileMenu"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-blue-800 border-t border-blue-700"
+          >
+            <ul className="flex flex-col items-center py-4 space-y-3">
+              {menuLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="block text-lg text-white hover:text-blue-300 transition"
+                    onClick={() => setIsOpen(false)} // close menu on click
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  
+
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center text-center h-screen relative px-6">
         <motion.h1
@@ -58,7 +130,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-24 bg-blue-50">
+      <section id='about' className="py-24 bg-blue-50">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -84,7 +156,7 @@ export default function Home() {
           </p>
           </motion.div>
           <motion.img
-            src="/branding-team.jpg"
+            src="/fm.jpg"
             alt="Our Team"
             className="rounded-2xl shadow-lg object-cover"
             initial={{ opacity: 0, x: 50 }}
@@ -96,7 +168,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-white">
+      <section id='services' className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
@@ -175,7 +247,7 @@ export default function Home() {
       </section> */}
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-white">
+      <section id='testimonials' className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
@@ -345,7 +417,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <Button className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-4 rounded-full flex items-center gap-2 mx-auto">
-              <Link className='inline-flex gap-10 items-center' href="https://chat.whatsapp.com/H2pYS2mORSoF9HB8sQnAHi?mode=ems_copy_c"><MessageCircle className="w-5 h-5" /> Contact Us</Link>
+              <Link className='inline-flex gap-3 items-center' href="https://chat.whatsapp.com/H2pYS2mORSoF9HB8sQnAHi?mode=ems_copy_c"><MessageCircle className="w-5 h-5" /> Contact Us</Link>
             </Button>
           </motion.div>
         </div>
@@ -369,7 +441,7 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <Button className="bg-white text-blue-700 hover:bg-blue-100 text-lg px-8 py-4 rounded-full">
-              <Link className='flex items-center gap-7' href="https://chat.whatsapp.com/H2pYS2mORSoF9HB8sQnAHi?mode=ems_copy_c"><MessageCircle className="w-5 h-5" /> Get Started</Link>  
+              <Link className='flex items-center gap-3' href="https://chat.whatsapp.com/H2pYS2mORSoF9HB8sQnAHi?mode=ems_copy_c"><MessageCircle className="w-5 h-5" /> Get Started</Link>  
  
           </Button>
         </motion.div>
