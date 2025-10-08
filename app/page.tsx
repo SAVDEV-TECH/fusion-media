@@ -417,7 +417,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <Button className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-4 rounded-full flex items-center gap-2 mx-auto">
-              <Link className='inline-flex gap-3 items-center' href="https://chat.whatsapp.com/H2pYS2mORSoF9HB8sQnAHi?mode=ems_copy_c"><MessageCircle className="w-5 h-5" /> Contact Us</Link>
+              <Link className='inline-flex gap-3 items-center' href="https://chat.whatsapp.com/H2pYS2mORSoF9HB8sQnAHi?mode=ems_copy_c"><MessageCircle className="w-5 h-5" /> Join us Now</Link>
             </Button>
           </motion.div>
         </div>
