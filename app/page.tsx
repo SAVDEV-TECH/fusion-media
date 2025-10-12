@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import Link from "next/link"
 import dynamic from "next/dynamic"
+import Image from 'next/image'
 
 const ContactForm = dynamic(() => import('@/components/contact/ContactForm'), { ssr: false })
 
@@ -29,10 +30,10 @@ export default function Home() {
       <div className="flex justify-between items-center h-20 px-6 md:px-12">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <img
+          <Image
             src="/fusion.jpg"
             alt="Fusion Media"
-            className="w-12 h-12 rounded-full object-cover"
+            width={48} height={48}
           />
           <h1 className="font-bold text-xl">Fusion Media</h1>
         </div>

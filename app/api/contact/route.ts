@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true, message: "Email sent successfully" }, { status: 200 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Contact route error:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
