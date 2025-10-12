@@ -8,6 +8,9 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import Link from "next/link"
+import dynamic from "next/dynamic"
+
+const ContactForm = dynamic(() => import('@/components/contact/ContactForm'), { ssr: false })
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false)
@@ -416,9 +419,7 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-4 rounded-full flex items-center gap-2 mx-auto">
-              <Link className='inline-flex gap-3 items-center' href="https://chat.whatsapp.com/H2pYS2mORSoF9HB8sQnAHi?mode=ems_copy_c"><MessageCircle className="w-5 h-5" /> Join us Now</Link>
-            </Button>
+            <ContactForm />
           </motion.div>
         </div>
       </section>
