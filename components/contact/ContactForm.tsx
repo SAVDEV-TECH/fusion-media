@@ -48,6 +48,7 @@ export default function ContactForm() {
       setStatus("sent")
       setForm({ name: "", phone: "", email: "", businessType: "" })
     } catch (err) {
+        console.log(err)
       setStatus("error")
       setError("Could not send message. Please try again later.")
     }
