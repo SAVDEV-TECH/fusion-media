@@ -1,94 +1,106 @@
-  'use client'
-  // import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Sparkles, Palette, Rocket, Star, MessageCircle } from 'lucide-react'
-// import Link from 'next/link'
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
-import Link from "next/link"
-import dynamic from "next/dynamic"
-import Image from 'next/image'
+ 'use client';
 
-const ContactForm = dynamic(() => import('@/components/contact/ContactForm'), { ssr: false })
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import {
+  Sparkles,
+  Palette,
+  Rocket,
+  Star,
+  MessageCircle,
+  Menu,
+  X,
+} from 'lucide-react';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+
+const ContactForm = dynamic(() => import('@/components/contact/ContactForm'), {
+  ssr: false,
+});
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const menuLinks = [
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Contact", href: "#contact" },
-  ]
+    { name: 'About', href: '#about' },
+    { name: 'Services', href: '#services' },
+    { name: 'Portfolio', href: '#portfolio' },
+    { name: 'Testimonials', href: '#testimonials' },
+    { name: 'Contact', href: '#contact' },
+  ];
 
   return (
     <main className="min-h-screen bg-white text-blue-900 overflow-hidden">
-     <nav className="w-full bg-blue-900 text-white fixed top-0 left-0 z-50 shadow-md">
-      <div className="flex justify-between items-center h-20 px-6 md:px-12">
-        {/* Logo */}
-        <div className="flex items-center gap-3">
-          <Image
-            src="/fusion.jpg"
-            alt="Fusion Media"
-            width={48} height={48}
-          />
-          <h1 className="font-bold text-xl">Fusion Media</h1>
-        </div>
+      {/* Navbar */}
+      <nav className="w-full bg-blue-900 text-white fixed top-0 left-0 z-50 shadow-md">
+        <div className="flex justify-between items-center h-20 px-6 md:px-12">
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <Image
+              src="/fusion.jpg"
+              alt="Fusion Media logo"
+              width={48}
+              height={48}
+              className="rounded-full"
+              priority
+            />
+            <h1 className="font-bold text-xl">Fusion Media</h1>
+          </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex gap-8">
-          {menuLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="hover:text-blue-300 transition"
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex gap-8">
+            {menuLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="hover:text-blue-300 transition"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
 
-        {/* Hamburger Button (Mobile) */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 rounded-md hover:bg-blue-800 transition"
-        >
-          {isOpen ? <X size={26} /> : <Menu size={26} /> }
-        </button>
-      </div>
-
-      {/* Mobile Menu Animation */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            key="mobileMenu"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-blue-800 border-t border-blue-700"
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+            className="md:hidden p-2 rounded-md hover:bg-blue-800 transition"
           >
-            <ul className="flex flex-col items-center py-4 space-y-3">
-              {menuLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="block text-lg text-white hover:text-blue-300 transition"
-                    onClick={() => setIsOpen(false)} // close menu on click
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
-  
+            {isOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              key="mobileMenu"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden bg-blue-800 border-t border-blue-700"
+            >
+              <ul className="flex flex-col items-center py-4 space-y-3">
+                {menuLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="block text-lg text-white hover:text-blue-300 transition"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center text-center h-screen relative px-6">
@@ -106,7 +118,8 @@ export default function Home() {
           transition={{ duration: 0.9, delay: 0.2 }}
           className="text-lg md:text-2xl text-blue-800 max-w-2xl mb-8"
         >
-          Elevate your business with strategy, design, and storytelling that stand out.
+          Elevate your business with strategy, design, and storytelling that
+          stand out.
         </motion.p>
         <motion.div
           initial={{ opacity: 0 }}
@@ -118,7 +131,7 @@ export default function Home() {
           </Button>
         </motion.div>
 
-        {/* Animated background */}
+        {/* Animated Background */}
         <motion.div
           className="absolute w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50"
           animate={{ y: [0, 20, 0] }}
@@ -134,7 +147,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id='about' className="py-24 bg-blue-50">
+      <section id="about" className="py-24 bg-blue-50">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -144,35 +157,31 @@ export default function Home() {
           >
             <h2 className="text-4xl font-bold text-blue-700 mb-6">About Us</h2>
             <p className="text-lg text-blue-800 leading-relaxed">
-          Fusion Midea is a digital growth agency that helps brands dominate their market. We fuse creative branding with data-driven marketing, advertising, and sales strategies to propel businesses forward. From brand identity to social media impact, we are your partner in sustainable digital growth.
-            Born from a passion for both creativity and strategy, Fusion Midea was founded to fill a gap in the digital world. We saw too many businesses struggling with fragmented marketing efforts—a beautiful brand here, a powerful ad campaign there, but no unified strategy. Our solution is simple: a single, comprehensive agency that handles every aspect of your digital journey. We are a team of brand builders, data analysts, and storytellers, all working together to help your business achieve its full potential.
-           Founded on April 7th, 2025, by DESTINY OGHENEMINE, FUSION MIDEA benefits from the vision of a renowned brand designer, creative monetization coach, digital agent, and dynamic young entrepreneur.
-
+              Fusion Media is a digital growth agency that helps brands dominate
+              their market. We combine creative branding with data-driven
+              marketing and storytelling to propel businesses forward.
             </p>
-            <p  className="mt-4 text-lg text-blue-800">
-          <strong>Mission statement:</strong>
-              To propel the growth of brands in the digital space by providing comprehensive solutions in branding, marketing, advertising, sales, and social media management.</p>
-         <p className="mt-4 text-lg text-blue-800">
-          <strong>
-            vision :
-          </strong>
-           To be the leading digital growth partner for businesses, known for our innovative strategies and measurable results that transform brands and accelerate their success in the digital world.
-          </p>
           </motion.div>
-          <motion.img
-            src="/fm.jpg"
-            alt="Our Team"
-            className="rounded-2xl shadow-lg object-cover"
+
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-          />
+          >
+            <Image
+              src="/fm.jpg"
+              alt="Fusion Media team working together"
+              width={600}
+              height={400}
+              className="rounded-2xl shadow-lg object-cover"
+            />
+          </motion.div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id='services' className="py-24 bg-white">
+      <section id="services" className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
@@ -183,22 +192,27 @@ export default function Home() {
           >
             Our Services
           </motion.h2>
+
           <div className="grid md:grid-cols-3 gap-8">
-            {[{
-              icon: Sparkles,
-              title: 'Brand Strategy',
-              text: 'We craft authentic strategies that make your brand shine.'
-            }, {
-              icon: Palette,
-              title: 'Design & Identity',
-              text: 'Visual storytelling that defines who you are and what you stand for.'
-            }, {
-              icon: Rocket,
-              title: 'Digital Experience',
-              text: 'Launch websites and campaigns that drive real impact.'
-            }].map(({ icon: Icon, title, text }, i) => (
+            {[
+              {
+                icon: Sparkles,
+                title: 'Brand Strategy',
+                text: 'We craft authentic strategies that make your brand shine.',
+              },
+              {
+                icon: Palette,
+                title: 'Design & Identity',
+                text: 'Visual storytelling that defines who you are and what you stand for.',
+              },
+              {
+                icon: Rocket,
+                title: 'Digital Experience',
+                text: 'Launch websites and campaigns that drive real impact.',
+              },
+            ].map(({ icon: Icon, title, text }, i) => (
               <motion.div
-                key={i}
+                key={title}
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -208,7 +222,9 @@ export default function Home() {
                 <Card className="rounded-2xl shadow-md hover:shadow-xl transition bg-blue-50">
                   <CardContent className="p-8">
                     <Icon className="w-12 h-12 text-blue-600 mx-auto mb-6" />
-                    <h3 className="text-2xl font-semibold mb-4 text-blue-700">{title}</h3>
+                    <h3 className="text-2xl font-semibold mb-4 text-blue-700">
+                      {title}
+                    </h3>
                     <p className="text-blue-800">{text}</p>
                   </CardContent>
                 </Card>
@@ -218,40 +234,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      {/* <section className="py-24 bg-blue-50">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold text-blue-700 mb-12"
-          >
-            Our Work
-          </motion.h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item) => (
-              <motion.div
-                key={item}
-                className="rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition relative group"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: item * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <img src={`/project-${item}.jpg`} alt={`Project ${item}`} className="object-cover w-full h-64" />
-                <div className="absolute inset-0 bg-blue-800 bg-opacity-0 group-hover:bg-opacity-70 transition flex items-center justify-center">
-                  <p className="text-white text-xl opacity-0 group-hover:opacity-100 transition">View Project</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
       {/* Testimonials Section */}
-      <section id='testimonials' className="py-24 bg-white">
+      <section id="testimonials" className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
@@ -263,19 +247,7 @@ export default function Home() {
             What Our Clients Say
           </motion.h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                cm:'“Fusion media completely transformed our company’s image. The results were instant.'
-              },
-              
-              {
-                cm:'“Fusion media completely transformed our company’s image. The results were instant.'
-              },
-              
-              {
-                cm:'“Fusion media completely transformed our company’s image. The results were instant.'
-              },
-            ].map(({cm},i) => (
+            {[1, 2, 3].map((i) => (
               <motion.div
                 key={i}
                 className="p-8 bg-blue-50 rounded-2xl shadow-md"
@@ -285,7 +257,10 @@ export default function Home() {
                 viewport={{ once: true }}
               >
                 <Star className="w-6 h-6 text-yellow-400 mx-auto mb-4" />
-                <p className="text-blue-800 italic mb-4"> {cm}</p>
+                <p className="text-blue-800 italic mb-4">
+                  “Fusion Media completely transformed our company’s image. The
+                  results were instant.”
+                </p>
                 <p className="font-semibold text-blue-700">Client {i}</p>
               </motion.div>
             ))}
@@ -293,8 +268,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Client intake */}
-        <section className="py-24 bg-blue-50">
+      {/* Contact / FAQ Section */}
+      <section id="contact" className="py-24 bg-blue-50">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 50 }}
@@ -303,109 +278,30 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-4xl font-bold text-blue-700 mb-12"
           >
-            Client Intake / FAQ
+            Q&A / Contact Us
           </motion.h2>
+
+          {/* FAQ */}
           <div className="space-y-8 text-left">
-            {[{
-              q: '  Can you briefly describe your business and what specific services you\'re looking for (e.g. social media management, paid ads, branding, etc.)?',
-              // a: 'On average, 4-6 weeks depending on scope and deliverables.'
-            }, {
-              q: ' What are your short-term and long-term goals for your online presence'
-              // a: 'Yes, we design and develop websites with strategic storytelling and modern UX.'
-            }, {
-              q: '  Who is your target audience, and which platforms are they most active on?',
-              // a: 'Absolutely! Send us your project details and we’ll get back within 24 hours.'
-            },
-            {
-              q:'Have you run any digital campaigns before? If yes, what worked and what didn’t?  ',
-              // a:'We provide digital marketing services like social media management, paid ads (Facebook, Instagram, Google), lead generation, branding, and content creation.'
-            },
-             {
-              q:'What is your expected timeline and budget for this project?',
- 
-              // a:' Just send us your answers to the client intake questions. Once we understand your needs, we’ll create a custom plan for you.'
-            }, 
-            
-          ].map(({ q }, i) => (
+            {[
+              {
+                q: 'Do you offer website design?',
+                a: 'Yes, we design and develop websites with strategic storytelling and modern UX.',
+              },
+              {
+                q: 'Can I get a custom quote?',
+                a: 'Absolutely! Send us your project details and we’ll get back within 24 hours.',
+              },
+              {
+                q: 'How long does it take to build a brand?',
+                a: 'Typically, 4–6 weeks depending on project scope and deliverables.',
+              },
+            ].map(({ q, a }) => (
               <motion.div
-                key={i}
+                key={q}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.2 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="font-semibold text-blue-700 mb-2">{q}</h3>
-                {/* <p className="text-blue-800">{a}</p> */}
-              </motion.div>
-            ))}
-          </div>
-          <motion.div
-            className="mt-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            
-          </motion.div>
-        </div>
-      </section>
-
-
-      {/* FAQ / Contact Section */}
-      <section className="py-24 bg-blue-50">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold text-blue-700 mb-12"
-          >
-        Q&A / Contact Us 
-          </motion.h2>
-          <div className="space-y-8 text-left">
-            {[{
-              q: 'How long does it take to build a brand?',
-              a: 'On average, 4-6 weeks depending on scope and deliverables.'
-            }, {
-              q: 'Do you offer website design?',
-              a: 'Yes, we design and develop websites with strategic storytelling and modern UX.'
-            }, {
-              q: 'Can I get a custom quote?',
-              a: 'Absolutely! Send us your project details and we’ll get back within 24 hours.'
-            },
-            {
-              q:'What services do you offer?  ',
-              a:'We provide digital marketing services like social media management, paid ads (Facebook, Instagram, Google), lead generation, branding, and content creation.'
-            },
-             {
-              q:'How do I get started?  ',
- 
-              a:' Just send us your answers to the client intake questions. Once we understand your needs, we’ll create a custom plan for you.'
-            },
-                    {
-              q:'How long before I start seeing results?  ',
- 
-              a:' It depends on the service. For paid ads, results may start showing in 1–2 weeks. Organic growth may take longer. '
-            },
-               {
-              q:'How do you communicate with clients?   ',
- 
-              a:'We use email, WhatsApp, and scheduled video calls for updates and progress reports.'
-            },
-            {
-              q:'What is your pricing structure?  ',
- 
-              a:' We offer flexible pricing based on the services you need. After understanding your goals, we’ll provide a detailed quote.'
-            },
-            
-          ].map(({ q, a }, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.2 }}
+                transition={{ duration: 0.4 }}
                 viewport={{ once: true }}
               >
                 <h3 className="font-semibold text-blue-700 mb-2">{q}</h3>
@@ -413,6 +309,8 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+
+          {/* Contact Form */}
           <motion.div
             className="mt-12"
             initial={{ opacity: 0, y: 30 }}
@@ -443,8 +341,13 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <Button className="bg-white text-blue-700 hover:bg-blue-100 text-lg px-8 py-4 rounded-full">
-              <Link className='flex items-center gap-3' href="https://chat.whatsapp.com/H2pYS2mORSoF9HB8sQnAHi?mode=ems_copy_c"><MessageCircle className="w-5 h-5" /> Get Started</Link>  
- 
+            <Link
+              className="flex items-center gap-3"
+              href="https://chat.whatsapp.com/H2pYS2mORSoF9HB8sQnAHi?mode=ems_copy_c"
+              target="_blank"
+            >
+              <MessageCircle className="w-5 h-5" /> Get Started
+            </Link>
           </Button>
         </motion.div>
       </section>
@@ -454,5 +357,5 @@ export default function Home() {
         <p>© {new Date().getFullYear()} Fusion Media Co. All rights reserved.</p>
       </footer>
     </main>
-  )
+  );
 }
