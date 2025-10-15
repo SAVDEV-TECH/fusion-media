@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+// import {Link} from 'next'
 import {
   Sparkles,
   Palette,
@@ -27,7 +28,7 @@ export default function Home() {
   const menuLinks = [
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
-    { name: 'Portfolio', href: '#portfolio' },
+    
     { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -40,14 +41,14 @@ export default function Home() {
           {/* Logo */}
           <div className="flex items-center gap-3">
             <Image
-              src="/fusion.jpg"
+              src="/FUSION MIDEA BRANDING1.png"
               alt="Fusion Media logo"
               width={48}
               height={48}
               className="rounded-full"
               priority
             />
-            <h1 className="font-bold text-xl">Fusion Media</h1>
+            <h1 className="font-bold text-xl">Fusion Midia</h1>
           </div>
 
           {/* Desktop Menu */}
@@ -110,7 +111,7 @@ export default function Home() {
           transition={{ duration: 0.8 }}
           className="text-5xl md:text-7xl font-bold text-blue-600 mb-4"
         >
-          We Build Bold Brands
+          We Propel  The Growth Of Brands
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 30 }}
@@ -126,9 +127,9 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
         >
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-4 rounded-full">
+          <Link href='#contact' className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-4 rounded-full">
             Let’s Build Your Brand
-          </Button>
+          </Link>
         </motion.div>
 
         {/* Animated Background */}
@@ -157,10 +158,17 @@ export default function Home() {
           >
             <h2 className="text-4xl font-bold text-blue-700 mb-6">About Us</h2>
             <p className="text-lg text-blue-800 leading-relaxed">
-              Fusion Media is a digital growth agency that helps brands dominate
+              Fusion Midea is a digital growth agency that helps brands dominate
               their market. We combine creative branding with data-driven
               marketing and storytelling to propel businesses forward.
+               
             </p>
+
+        <div className='my-10'> <strong>OUR MISSION :</strong>
+          To propel the growth of brands in the digital space by providing comprehensive solutions in branding, marketing, advertising, sales, and social media management.
+          </div>
+
+           <div className='my-10'> <strong>OUR VISION :</strong>  To be the leading digital growth partner for businesses, known for our innovative strategies and measurable results that transform brands and accelerate their success in the digital world.</div>
           </motion.div>
 
           <motion.div
@@ -169,13 +177,16 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <Image
-              src="/fm.jpg"
-              alt="Fusion Media team working together"
-              width={600}
-              height={400}
-              className="rounded-2xl shadow-lg object-cover"
-            />
+             {/* responsive container with 16:9 aspect ratio using Tailwind */}
+<div className="max-w-4xl mx-auto aspect-[16/9]">
+  <video
+    src="/fm video.mp4"
+    poster="/fm br.png"       // optional poster in public/
+    controls
+    playsInline
+    className="w-full h-full object-cover rounded-lg"
+  />
+</div>
           </motion.div>
         </div>
       </section>
@@ -197,18 +208,28 @@ export default function Home() {
             {[
               {
                 icon: Sparkles,
-                title: 'Brand Strategy',
-                text: 'We craft authentic strategies that make your brand shine.',
+                title: 'Innovation',
+                text: ' We constantly evolve our strategies and embrace new technologies to stay ahead of the curve..',
               },
               {
                 icon: Palette,
                 title: 'Design & Identity',
-                text: 'Visual storytelling that defines who you are and what you stand for.',
+                text: ' We work as a unified team and in partnership with our clients to achieve shared goals.',
               },
               {
                 icon: Rocket,
-                title: 'Digital Experience',
-                text: 'Launch websites and campaigns that drive real impact.',
+                title: 'Client Success',
+                text: ' The growth and success of our clients are the ultimate measure of our own.',
+              },
+               {
+                icon: Rocket,
+                title: 'Integrity',
+                text: ' We operate with honesty, transparency, and a commitment to doing what\'s right.',
+              },
+              {
+                icon: Palette,
+                title: 'Results-Oriented',
+                text: '  We are driven by data and focused on delivering tangible, impactful results for every client.',
               },
             ].map(({ icon: Icon, title, text }, i) => (
               <motion.div
@@ -332,7 +353,7 @@ export default function Home() {
           viewport={{ once: true }}
           className="text-4xl font-bold mb-6"
         >
-          Ready to Transform Your Brand?
+          Join our lauching
         </motion.h2>
         <motion.div
           initial={{ opacity: 0 }}
@@ -346,7 +367,7 @@ export default function Home() {
               href="https://chat.whatsapp.com/H2pYS2mORSoF9HB8sQnAHi?mode=ems_copy_c"
               target="_blank"
             >
-              <MessageCircle className="w-5 h-5" /> Get Started
+              <MessageCircle className="w-5 h-5" />Join
             </Link>
           </Button>
         </motion.div>
@@ -354,7 +375,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-10 bg-blue-950 text-blue-100 text-center">
-        <p>© {new Date().getFullYear()} Fusion Media Co. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Fusion Midea Co. All rights reserved.</p>
       </footer>
     </main>
   );

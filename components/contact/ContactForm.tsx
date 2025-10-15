@@ -9,6 +9,7 @@ type FormState = {
   phone: string
   email: string
   businessType: string
+  whatsapp?: string
 }
 
 export default function ContactForm() {
@@ -75,10 +76,14 @@ export default function ContactForm() {
         <label className="block text-sm font-medium text-blue-700">Type of business</label>
         <Input name="businessType" value={form.businessType} onChange={onChange} />
       </div>
+        <div>
+        <label className="block text-sm font-medium text-blue-700">whatsapp contact</label>
+        <Input name="whatsapp" value={form.whatsapp} onChange={onChange} />
+      </div>
 
       <div className="flex items-center gap-4">
         <Button type="submit" className="bg-blue-600" disabled={status === "sending"}>
-          {status === "sending" ? "Sending..." : "Send Inquiry"}
+          {status === "sending" ? "Submitting..." : "Submit"}
         </Button>
         {status === "sent" && <p className="text-green-600">Thanks — we received your message.</p>}
         {error && <p className="text-red-600">{error}</p>}

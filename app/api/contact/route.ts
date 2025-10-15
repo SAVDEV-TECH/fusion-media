@@ -11,12 +11,13 @@ interface ContactFormData {
   email: string;
   phone?: string;
   businessType?: string;
+  whatsapp?: string;
 }
 
 export async function POST(req: Request) {
   try {
     const body = (await req.json()) as ContactFormData;
-    const { name, email, phone, businessType } = body ?? {};
+    const { name, email, phone, businessType, whatsapp } = body ?? {};
 
     if (!name || !email) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 422 });
@@ -34,6 +35,7 @@ export async function POST(req: Request) {
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone || "-"}</p>
         <p><strong>Business Type:</strong> ${businessType || "-"}</p>
+        <p><strong>WhatsApp:</strong> ${whatsapp || "-"}</p>
       </div>
     `;
 
