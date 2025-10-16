@@ -355,7 +355,7 @@ export default function Home() {
           viewport={{ once: true }}
           className="text-4xl font-bold mb-6"
         >
-          Join our lauching
+          Join our Launching
         </motion.h2>
         <motion.div
           initial={{ opacity: 0 }}
