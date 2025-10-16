@@ -40,14 +40,15 @@ export default function Home() {
         <div className="flex justify-between items-center h-20 px-6 md:px-12">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <Image
-              src="/FUSION MIDEA BRANDING1.png"
+          <div className='w-[50px] h-[50px] rounded-full bg-blue-700'>  <Image
+              src="/FUSION MIDEA BRANDING3.png"
               alt="Fusion Media logo"
               width={48}
               height={48}
               className="rounded-full"
               priority
             />
+            </div>
             <h1 className="font-bold text-xl">Fusion Midea</h1>
           </div>
 
@@ -184,6 +185,7 @@ export default function Home() {
     poster="/fm br.png"       // optional poster in public/
     controls
     playsInline
+    autoPlay
     className="w-full h-full object-cover rounded-lg"
   />
 </div>

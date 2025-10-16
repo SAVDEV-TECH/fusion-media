@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: "Fusion Media",
     images: [
       {
-        url: "/fusion.jpg",
+        url: "/FUSION MIDEA BRANDING3.png",
         width: 1200,
         height: 630,
         alt: "Fusion Media Brand",
@@ -65,15 +65,15 @@ export const metadata: Metadata = {
     title: "Fusion Media | Digital Branding Agency",
     description:
       "We build bold brands through design, marketing, and storytelling.",
-    images: ["/fusion.jpg"],
+    images: ["/FUSION MIDEA BRANDING3.png"],
   },
   alternates: {
     canonical: "https://fusion-media-wdxt-git-main-saviour-s-projects-fae96d2e.vercel.app/",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "//FUSION MIDEA BRANDING3.png",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    apple: "//FUSION MIDEA BRANDING3.png",
   },
 };
 
