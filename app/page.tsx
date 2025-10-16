@@ -48,7 +48,7 @@ export default function Home() {
               className="rounded-full"
               priority
             />
-            <h1 className="font-bold text-xl">Fusion Midia</h1>
+            <h1 className="font-bold text-xl">Fusion Midea</h1>
           </div>
 
           {/* Desktop Menu */}

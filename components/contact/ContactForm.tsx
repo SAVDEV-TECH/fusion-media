@@ -56,38 +56,58 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4 p-6 bg-white rounded-2xl shadow-md">
-      <div>
-        <label className="block text-sm font-medium text-blue-700">Full name</label>
-        <Input name="name" value={form.name} onChange={onChange} required />
-      </div>
+    // <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-4 p-6 bg-white rounded-2xl shadow-md">
+    //   <div>
+    //     <label className="block text-sm font-medium text-blue-700">Full name</label>
+    //     <Input name="name" value={form.name} onChange={onChange} required />
+    //   </div>
 
-      <div>
-        <label className="block text-sm font-medium text-blue-700">Phone</label>
-        <Input name="phone" value={form.phone} onChange={onChange} />
-      </div>
+    //   <div>
+    //     <label className="block text-sm font-medium text-blue-700">Phone</label>
+    //     <Input name="phone" value={form.phone} onChange={onChange} />
+    //   </div>
 
-      <div>
-        <label className="block text-sm font-medium text-blue-700">Email</label>
-        <Input type="email" name="email" value={form.email} onChange={onChange} required />
-      </div>
+    //   <div>
+    //     <label className="block text-sm font-medium text-blue-700">Email</label>
+    //     <Input type="email" name="email" value={form.email} onChange={onChange} required />
+    //   </div>
 
-      <div>
-        <label className="block text-sm font-medium text-blue-700">Type of business</label>
-        <Input name="businessType" value={form.businessType} onChange={onChange} />
-      </div>
-        <div>
-        <label className="block text-sm font-medium text-blue-700">whatsapp contact</label>
-        <Input name="whatsapp" value={form.whatsapp} onChange={onChange} />
-      </div>
+    //   <div>
+    //     <label className="block text-sm font-medium text-blue-700">Type of business</label>
+    //     <Input name="businessType" value={form.businessType} onChange={onChange} />
+    //   </div>
+    //     <div>
+    //     <label className="block text-sm font-medium text-blue-700">whatsapp contact</label>
+    //     <Input name="whatsapp" value={form.whatsapp} onChange={onChange} />
+    //   </div>
 
-      <div className="flex items-center gap-4">
-        <Button type="submit" className="bg-blue-600" disabled={status === "sending"}>
-          {status === "sending" ? "Submitting..." : "Submit"}
-        </Button>
-        {status === "sent" && <p className="text-green-600">Thanks — we received your message.</p>}
-        {error && <p className="text-red-600">{error}</p>}
+    //   <div className="flex items-center gap-4">
+    //     <Button type="submit" className="bg-blue-600" disabled={status === "sending"}>
+    //       {status === "sending" ? "Submitting..." : "Submit"}
+    //     </Button>
+    //     {status === "sent" && <p className="text-green-600">Thanks — we received your message.</p>}
+    //     {error && <p className="text-red-600">{error}</p>}
+    //   </div>
+    // </form>
+   
+    <section className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-6">
+      <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
+        Contact Fusion Midea
+      </h1>
+
+      <div className="bg-white rounded-2xl shadow-xl p-4 w-full max-w-3xl">
+        <iframe
+          src=" https://docs.google.com/forms/d/e/1FAIpQLSfoB41V7jE1tnJp6n8qyqn7zfRz4oA3lSeQrmFCen-4XQBvVg/viewform?usp=header" className="w-full h-[800px] rounded-lg"
+          
+          frameBorder={0}
+          marginHeight={0}
+          marginWidth={0}
+        >
+          Loading…
+        </iframe>
       </div>
-    </form>
-  )
+    </section>
+  );
 }
+
+  
