@@ -221,7 +221,7 @@ export default function Home() {
               {
                 icon: Rocket,
                 title: 'Advertising ',
-                text: ' : Managing targeted ad campaigns across platforms like Google, Facebook, and Instagram to drive traffic and conversions.',
+                text: ' Managing targeted ad campaigns across platforms like Google, Facebook, and Instagram to drive traffic and conversions.',
               },
                {
                 icon: Rocket,
