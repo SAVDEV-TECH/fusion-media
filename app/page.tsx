@@ -179,16 +179,16 @@ export default function Home() {
             viewport={{ once: true }}
           >
              {/* responsive container with 16:9 aspect ratio using Tailwind */}
-<div className="max-w-4xl mx-auto aspect-[16/9]">
-  <video
-    src="/fm video.mp4"
-    poster="/fm br.png"       // optional poster in public/
-    controls
-    playsInline
-    autoPlay
-    className="w-full h-full object-cover rounded-lg"
+ <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] max-w-4xl mx-auto">
+  <Image
+    src="/fusion im.png" // make sure this image is inside your /public folder
+    alt="Fusion brand image"
+    fill
+    className="object-cover rounded-lg"
+    priority
   />
 </div>
+
           </motion.div>
         </div>
       </section>
@@ -210,28 +210,28 @@ export default function Home() {
             {[
               {
                 icon: Sparkles,
-                title: 'Innovation',
-                text: ' We constantly evolve our strategies and embrace new technologies to stay ahead of the curve..',
+                title: '	Branding',
+                text: '  We constantly evolve our strategies and embrace new technologies to stay ahead of the curve..',
               },
               {
                 icon: Palette,
-                title: 'Design & Identity',
-                text: ' We work as a unified team and in partnership with our clients to achieve shared goals.',
+                title: 'Digital Marketing ',
+                text: ' Developing and executing integrated marketing strategies to increase brand visibility and generate leads. ',
               },
               {
                 icon: Rocket,
-                title: 'Client Success',
-                text: ' The growth and success of our clients are the ultimate measure of our own.',
+                title: 'Advertising ',
+                text: ' : Managing targeted ad campaigns across platforms like Google, Facebook, and Instagram to drive traffic and conversions.',
               },
                {
                 icon: Rocket,
-                title: 'Integrity',
-                text: ' We operate with honesty, transparency, and a commitment to doing what\'s right.',
+                title: 'Sales Funnel Optimization ',
+                text: 'Building and refining sales funnels to maximize conversion rates and revenue.  ',
               },
               {
                 icon: Palette,
-                title: 'Results-Oriented',
-                text: '  We are driven by data and focused on delivering tangible, impactful results for every client.',
+                title: 'Social Media Management ',
+                text: ' Creating, curating, and managing social media content to build community and drive engagement.',
               },
             ].map(({ icon: Icon, title, text }, i) => (
               <motion.div
