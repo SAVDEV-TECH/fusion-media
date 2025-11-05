@@ -98,7 +98,8 @@ export default function ContactForm() {
      <div className="bg-white rounded-2xl shadow-xl p-4 w-full max-w-3xl mx-auto">
   <div className="relative w-full" style={{ paddingTop: "125%" }}> 
     <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSdy5by-DBZ_AAdnGLFAQO9-q_OkPFHusCNS0CEcNQsfvF8F4A/viewform?usp=header"
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdy5by-DBZ_AAdnGLFAQO9-q_OkPFHusCNS0CEcNQsfvF8F4A/viewform?embedded=true"
+ 
       className="absolute top-0 left-0 w-full h-full rounded-lg"
       frameBorder="0"
       marginHeight={0}
